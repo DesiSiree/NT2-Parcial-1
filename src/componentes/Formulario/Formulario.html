@@ -1,0 +1,134 @@
+
+<section class="src-componentes-formulario">
+    <div class="jumbotron">
+      <h2>Componentes de Formulario</h2>
+      <hr>
+  
+      <vue-form :state="formState" @submit.prevent="enviar()">
+  
+        <!-- ------------------------------------------------------------------------ -->
+        <!-- Campo nombre -->
+        <validate tag="div">
+          <label for="nombre">Nombre</label>
+          <input 
+            type="text" 
+            id="nombre" 
+            name="nombre"
+            class="form-control"
+            autocomplete="off"
+            v-model.trim="formData.nombre"
+            required
+            :minlength="nombreLengthMin"
+            :maxlength="nombreLengthMax"
+            no-espacios
+          >
+          <!-- Carteles de validación de campo -->
+          <field-messages name="nombre" show="$dirty">
+            <div slot="required" class="alert alert-danger mt-1">Campo requerido</div>
+            <div slot="no-espacios" class="alert alert-danger mt-1">
+              No se permiten espacios intermedios en este campo
+            </div>
+            <div slot="minlength" class="alert alert-danger mt-1">
+              Se deben ingresar como mínimo {{nombreLengthMin}} caracteres
+            </div>
+            <div v-if="formData.nombre.length == nombreLengthMax" class="alert alert-danger mt-1">
+              Máximo de caracteres ({{nombreLengthMax}}) alcanzados
+            </div>
+          </field-messages>
+        </validate>
+        <br>
+
+        <!-- ------------------------------------------------------------------------ -->
+        <!-- Campo descipcion-->
+
+        <validate tag="div">
+          <label for="descripcion">Descripcion</label>
+          <input 
+            type="text" 
+            id="descripcion" 
+            name="descripcion"
+            class="form-control"
+            autocomplete="off"
+            v-model.trim="formData.descripcion"
+            required
+          >
+          <!-- Carteles de validación de campo -->
+          <field-messages name="descripcion" show="$dirty">
+            <div slot="required" class="alert alert-danger mt-1">Campo requerido</div>
+    
+          </field-messages>
+        </validate>
+        <br>
+  
+        <!-- ------------------------------------------------------------------------ -->
+        <!-- Campo importe -->
+        <validate tag="div">
+          <label for="Importe">Importe</label>
+          <input 
+            type="number" 
+            id="importe" 
+            class="form-control"
+            name="importe"
+            autocomplete="off"
+            v-model.number="formData.importe"
+            required
+          >
+          <!-- Carteles de validación de campo -->
+          <field-messages name="importe" show="$dirty">
+            <div slot="required" class="alert alert-danger mt-1">Campo requerido</div>
+          </field-messages>
+        </validate>
+        <br>
+  
+        
+        <!-- ------------------------------------------------------------------------ -->
+        <!-- ------------------------------------------------------------------------ -->
+        <button class="btn btn-success my-4" :disabled="formState.$invalid" type="submit">Enviar</button>
+  
+      </vue-form>
+
+
+
+  
+    </div>
+    <div class="jumbotron">
+      <h4>Tabla de Gastos</h4>
+      <hr>
+      <validate tag="div">
+        <label for="presupuesto">Presupuesto</label>
+        <input 
+          type="number"
+          id="presupuesto"
+          class="form-control"
+          v-model="presupuesto"
+        >
+      </validate>
+      <br>        
+      <br>
+      <div class="table-responsive">
+        <table class="table">
+            <tr class="bg-success text-white tabla-header">
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>importe</th>
+                <th>Fecha creacion</th>
+            </tr>
+            <tr class="bg-info text-white  color-lineas" v-for="(item, index) in items" :key="index">
+                <td>{{ item.nombre }}</td>
+                <td>{{ item.descripcion }}</td>
+                <td>${{ item.importe }}</td>
+                <td>{{ item.fecha }}</td>
+            </tr>
+            <tr :class="getColor()">
+              <th>Gasto Total:</th>
+              <th></th>
+              <th>${{total}}</th>
+              <th></th>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+
+  

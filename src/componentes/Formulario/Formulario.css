@@ -1,0 +1,54 @@
+.src-componentes-formulario {
+    background-color: rgb(255, 255, 255);
+}
+
+.jumbotron {
+    background-color: rgba(204, 204, 204, 0.877);
+    color: white;
+}
+
+hr {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+pre {
+    color: white;
+}
+
+.btn-success my-4{
+    color: black;
+    background-color:  rgb(255, 251, 0);
+
+}
+
+.table-responsive{
+    color: rgb(236, 0, 0);
+}
+
+.tabla-header {
+    background-color: rgb(0, 0, 0) !important;
+}
+
+.tabla-footer {
+    background-color: rgb(158, 158, 158) !important;
+}
+
+.color-lineas{
+    background-color: rgb(230, 162, 162) !important;
+}
+
+.importe-inferior {
+    color: green !important;
+}
+
+.importe-entre {
+    color: magenta !important;
+}
+
+.importe-superior {
+    color: orange !important;
+}
+
+.importe-mayorPresupuesto {
+    color: red !important;
+}
